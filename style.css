@@ -1,0 +1,155 @@
+/* --- Aturan Dasar & Tipografi --- */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: linear-gradient(135deg, #fdf8f5 0%, #fae8e0 100%);
+    color: #4a3e3d;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* --- Wadah Utama Gaya Aesthetic Minimalis --- */
+.card-container {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px); /* Efek kaca buram transparan */
+    padding: 40px 30px;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(163, 122, 108, 0.15);
+    text-align: center;
+    max-width: 420px;
+    width: 85%;
+    z-index: 10;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.sweet-tag {
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #a37a6c;
+    margin-bottom: 5px;
+}
+
+header h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #8c5344;
+    font-size: 2.8em;
+    margin: 0;
+}
+
+header h2 {
+    font-size: 1.2em;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: #b88a7d;
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+/* --- Bingkai Foto Lembut --- */
+.aesthetic-frame {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 25px auto;
+    border: 4px solid #fff;
+    box-shadow: 0 8px 20px rgba(163, 122, 108, 0.2);
+}
+
+.aesthetic-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Box Teks Ucapan --- */
+.message-box {
+    margin-bottom: 30px;
+    padding: 0 10px;
+}
+
+.main-wish {
+    font-size: 1.05em;
+    line-height: 1.6;
+    font-weight: 400;
+    font-style: italic;
+    color: #5c4d4c;
+    margin-bottom: 15px;
+}
+
+.sub-wish {
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #8a7675;
+}
+
+/* --- Tombol Interaktif Elegan --- */
+button#magicButton {
+    background-color: #8c5344;
+    color: #fff;
+    border: none;
+    padding: 12px 35px;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 25px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(140, 83, 68, 0.3);
+}
+
+button#magicButton:hover {
+    background-color: #734336;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(140, 83, 68, 0.4);
+}
+
+/* --- Panggung Efek Kelopak Hati / Bunga --- */
+#petal-stage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.petal {
+    position: absolute;
+    background-color: #e8c5be;
+    border-radius: 150px 0 150px 150px; /* Bentuk kelopak bunga/hati miring */
+    opacity: 0.7;
+    pointer-events: auto;
+    cursor: pointer;
+    animation: fallAndSway 7s linear forwards;
+}
+
+@keyframes fallAndSway {
+    0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+footer {
+    margin-top: 25px;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+    color: #a37a6c;
+}
