@@ -3,13 +3,30 @@ document.getElementById('magicButton').addEventListener('click', function() {
     const stage = document.getElementById('petal-stage');
     const song = document.getElementById('romanticSong');
     
-    // Putar musik romantis secara halus
-    song.volume = 0.6; // Volume diatur sedang (60%) agar syahdu
-    song.play().catch(error => {
-        console.log("Pemutaran musik tertahan oleh izin browser:", error);
-    });
+    // Memastikan audio mengulang dari awal dan memutarnya
+    song.currentTime = 0;
+    song.volume = 0.7; // Atur volume (70%)
     
-    // Sembunyikan tombol
+    // Memaksa peramban untuk memutar audio lokal
+    const playPromise = song.play();
+    
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            console.log("Musik berhasil diputar!");
+        }).catch(error => {
+            console.log("Gagal memutar musik secara otomatis: ", error);
+            
+            // Solusi otomatis tanpa alert kaku: 
+            // Jika browser memblokir, musik akan otomatis berputar begitu Ilma menyentuh bagian mana saja di layar
+            const playOnSubsequentClick = () => {
+                song.play();
+                document.body.removeEventListener('click', playOnSubsequentClick);
+            };
+            document.body.addEventListener('click', playOnSubsequentClick);
+        });
+    }
+    
+    // Sembunyikan tombol dengan transisi lembut
     this.style.opacity = '0';
     setTimeout(() => this.style.display = 'none', 300);
 
@@ -58,15 +75,13 @@ const slides = document.querySelectorAll('.photo-slider .slide');
 let currentSlide = 0;
 
 function nextSlide() {
-    // Hilangkan kelas active dari foto saat ini
-    slides[currentSlide].classList.remove('active');
-    
-    // Pindah ke indeks foto berikutnya (kembali ke 0 jika sudah di foto terakhir)
-    currentSlide = (currentSlide + 1) % slides.length;
-    
-    // Tambahkan kelas active ke foto yang baru
-    slides[currentSlide].classList.add('active');
+    // Pastikan elemen slide ditemukan sebelum memanipulasi class
+    if (slides.length > 0) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
 }
 
-// Menjalankan slideshow otomatis setiap 3000ms (3 detik)
+// Menjalankan slideshow otomatis setiap 3 detik
 setInterval(nextSlide, 3000);
